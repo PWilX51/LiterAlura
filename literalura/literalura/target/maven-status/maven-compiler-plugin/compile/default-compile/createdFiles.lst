@@ -1,0 +1,12 @@
+com\proyecto\literalura\ConvierteDatos.class
+com\proyecto\literalura\ConsumoAPI.class
+com\proyecto\literalura\repository\AutorRepository.class
+com\proyecto\literalura\repository\LibroRepository.class
+com\proyecto\literalura\model\Resultados.class
+com\proyecto\literalura\model\DatosAutores.class
+com\proyecto\literalura\model\Libro.class
+com\proyecto\literalura\IConvierteDatos.class
+com\proyecto\literalura\principal\Principal.class
+com\proyecto\literalura\model\Autor.class
+com\proyecto\literalura\model\DatosLibros.class
+com\proyecto\literalura\LiteraluraApplication.class
