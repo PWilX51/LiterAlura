@@ -92,6 +92,7 @@ public class Principal {
             repository.save(libro);
             System.out.println("Libro guardado correctamente");
         }
+        System.out.println(libro.toString());
     }
 
     private void mostrarLibros(){
@@ -146,6 +147,7 @@ public class Principal {
                     repository.save(libro);
                     System.out.println("Libro guardado correctamente");
                 }
+                System.out.println(libro.toString());
             }
         }
 
