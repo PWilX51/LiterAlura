@@ -74,12 +74,24 @@ public class Principal {
         DatosLibros datos = resultados.datosLibrosList().get(0);
         Autor autor = new Autor(datos.datosAutoresList().get(0));
         Libro libro = new Libro(datos);
-        libro.setAutor(autor);
-        System.out.println(libro.getAutor());
-        autorRepository.save(autor);
-        System.out.println("Autor guardado correctamente.");
-        repository.save(libro);
-        System.out.println("Libro guardado correctamente");
+        Optional<Autor> autorEncontrado = autorRepository.findByNombreContainsIgnoreCase(autor.getNombre());
+        Optional<Libro> libroEncontrado = repository.findByTituloContainsIgnoreCase(libro.getTitulo());
+
+        if(autorEncontrado.isPresent()) {
+            System.out.println("Autor ya registrado");
+            libro.setAutor(autorEncontrado.get());
+        }else {
+            autorRepository.save(autor);
+            System.out.println("Autor guardado correctamente.");
+            libro.setAutor(autor);
+        }
+
+        if(libroEncontrado.isPresent()) {
+            System.out.println("Libro ya registrado");
+        }else{
+            repository.save(libro);
+            System.out.println("Libro guardado correctamente");
+        }
     }
 
     private void mostrarLibros(){
@@ -116,9 +128,24 @@ public class Principal {
             if(datos.datosAutoresList().size()>0) {
                 Autor autor = new Autor(datos.datosAutoresList().get(0));
                 Libro libro = new Libro(datos);
-                libro.setAutor(autor);
-                autorRepository.save(autor);
-                repository.save(libro);
+                Optional<Autor> autorEncontrado = autorRepository.findByNombreContainsIgnoreCase(autor.getNombre());
+                Optional<Libro> libroEncontrado = repository.findByTituloContainsIgnoreCase(libro.getTitulo());
+
+                if(autorEncontrado.isPresent()) {
+                    System.out.println("Autor ya registrado");
+                    libro.setAutor(autorEncontrado.get());
+                }else {
+                    autorRepository.save(autor);
+                    System.out.println("Autor guardado correctamente.");
+                    libro.setAutor(autor);
+                }
+
+                if(libroEncontrado.isPresent()) {
+                    System.out.println("Libro ya registrado");
+                }else{
+                    repository.save(libro);
+                    System.out.println("Libro guardado correctamente");
+                }
             }
         }
 
